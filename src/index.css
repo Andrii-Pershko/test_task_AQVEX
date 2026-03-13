@@ -1,15 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
-
-
-
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Klein';
+  src: url('./assets/fonts/Klein-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Klein';
+  src: url('./assets/fonts/Klein-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
-body {
-  @apply bg-slate-950 text-slate-50;
+@font-face {
+  font-family: 'Klein';
+  src: url('./assets/fonts/Klein-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
@@ -19,11 +34,36 @@ body {
   --white-text-color: #ffffff;
   --border-color: #ebebeb;
   --background-color: #e8f4ff;
-
+  --background-hover: #d1e8ff;
+  --line-color: #ff2741;
+  --input-color: #f6f7f9;
   --font-family: "Klein", sans-serif;
   --second-family: "Afacad", sans-serif;
-
 }
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--primary-text-color);
+  font-weight: 500;
+}
+
+* {
+  outline: none;
+  box-sizing: border-box;
+  letter-spacing: -0.02em;
+}
+
+input::placeholder,
+input {
+  color: var(--primary-text-color);
+  font-weight: 400;
+  font-family: var(--second-family);
+}
+
 
 .gradient-price {
   font-family: var(--font-family);
@@ -35,4 +75,25 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.old-price {
+  position: relative;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: var(--gray-text-color);
+}
+
+.old-price::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 90%;
+  height: 2px;
+  background: var(--line-color);
 }
