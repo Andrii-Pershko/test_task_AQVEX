@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Product, ProductVolume } from '../../store/productsSlice';
 import SceletImg from '../../assets/images/home/scelet.jpg';
 import DiscountIcon from '../../assets/images/home/discount.svg?react';
@@ -63,7 +64,8 @@ export const ProductCart = ({ product }: { product: Product }) => {
             : SceletImg;
 
     return (
-        <li className="max-w-[450px] min-w-[347px] flex flex-col flex-1 w-auto cursor-pointer transition-all duration-300">
+        <li className="max-w-[450px] min-w-[347px] flex flex-col flex-1 w-auto transition-all duration-300">
+            <Link to={`/product/${product.id}`} className="block cursor-pointer">
             <div className="mb-[18px] relative w-full aspect-[347/280] overflow-hidden rounded-[12px] bg-[var(--input-color)]">
                 {!imageLoaded && (
                     <div
@@ -118,8 +120,9 @@ export const ProductCart = ({ product }: { product: Product }) => {
                 <DripIcon />
                 <p className="text-[14px] opacity-[var(--opacity-text)]">{product.category}</p>
             </div>
+            </Link>
 
-            <div className="flex items-center gap-[8px]">
+            <div className="flex items-center gap-[8px]" onClick={(e) => e.stopPropagation()}>
                 {showVolumeDropdown ? (
                     <div className="relative min-w-[123px] border border-[var(--border-color)] rounded-[12px] py-[16px] pl-[20px]" ref={volumeDropdownRef}>
                         <p
@@ -149,7 +152,7 @@ export const ProductCart = ({ product }: { product: Product }) => {
                         </div>
                     </div>
                 ) : null}
-                <button className="bg-[var(--background-color)] hover:bg-[var(--background-hover)] transition-all duration-300 w-full flex items-center gap-[8px] justify-center py-[12px] rounded-[12px]">
+                <button type="button" className="bg-[var(--background-color)] hover:bg-[var(--background-hover)] transition-all duration-300 w-full flex items-center gap-[8px] justify-center py-[12px] rounded-[12px]">
                     <ToCartIcon />
                     <p>В корзину</p>
                 </button>
