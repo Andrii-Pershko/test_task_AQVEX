@@ -76,7 +76,7 @@ const Home = () => {
             )}
             {!loading && !error && sortedItems.length > 0 && (
                 <>
-                    <ul className="flex flex-wrap gap-[20px] gap-y-[60px] justify-between">
+                    <ul className="flex flex-wrap gap-[20px] gap-y-[60px] justify-center md:justify-between">
                         {paginatedItems.map((item) => (
                             <ProductCart key={item.id} product={item} />
                         ))}
