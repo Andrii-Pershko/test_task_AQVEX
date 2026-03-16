@@ -10,20 +10,20 @@ import type { Product } from '../../store/productsSlice';
 const PER_PAGE = 12;
 
 function sortProducts(items: Product[], sortBy: SortOption): Product[] {
-  const copy = [...items];
-  switch (sortBy) {
-    case 'price_asc':
-      return copy.sort((a, b) => a.price - b.price);
-    case 'price_desc':
-      return copy.sort((a, b) => b.price - a.price);
-    case 'popularity':
-    default:
-      return copy.sort((a, b) => {
-        const byRating = b.rating - a.rating;
-        if (byRating !== 0) return byRating;
-        return b.reviews_count - a.reviews_count;
-      });
-  }
+    const copy = [...items];
+    switch (sortBy) {
+        case 'price_asc':
+            return copy.sort((a, b) => a.price - b.price);
+        case 'price_desc':
+            return copy.sort((a, b) => b.price - a.price);
+        case 'popularity':
+        default:
+            return copy.sort((a, b) => {
+                const byRating = b.rating - a.rating;
+                if (byRating !== 0) return byRating;
+                return b.reviews_count - a.reviews_count;
+            });
+    }
 }
 
 const Home = () => {
@@ -76,7 +76,7 @@ const Home = () => {
             )}
             {!loading && !error && sortedItems.length > 0 && (
                 <>
-                    <ul className="flex flex-wrap gap-[20px] gap-y-[60px]">
+                    <ul className="flex flex-wrap gap-[20px] gap-y-[60px] justify-between">
                         {paginatedItems.map((item) => (
                             <ProductCart key={item.id} product={item} />
                         ))}
